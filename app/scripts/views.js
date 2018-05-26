@@ -8,7 +8,7 @@ function python_view(){
     create_base_view()
 
   
-    get_data("https://coding-resources-api.herokuapp.com/items", populate_posts)
+    get_data("https://coding-resources-api.herokuapp.com/items/filter", 'terminal_info', populate_posts)
 
 }
 
@@ -25,13 +25,14 @@ function create_base_view(){
 
 }
 
-function get_data(url, populate_posts){
+function get_data(url, category, populate_posts){
 
     page_wrapper.innerHTML = ''
 
     $.ajax({
-        method: "GET",
+        method: "POST",
         url: url,
+        data: {category: category},
         success: (response)=>{populate_posts(response)},
         async: true
     })
