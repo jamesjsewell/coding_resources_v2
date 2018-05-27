@@ -9,7 +9,7 @@ function python_view(){
     create_base_view('python')
 
     // gets posts data and then puts them on the dom 
-    get_data("https://coding-resources-api.herokuapp.com/items/filter", 'python_info')
+    get_data("https://coding-resources-api.herokuapp.com/items/filter", 'python')
 
     link_href = 'https://drive.google.com/drive/u/0/folders/10LSb-wYQUDX9gvAgQ1wrQF-o3Wp_2yIY'
     create_pdf_section(link_href, 'python' )
@@ -66,6 +66,8 @@ function create_base_view(location){
             </div>
         </nav>
 
+        <div id="posts" class="container"></div>
+
     </div>
     
     `
@@ -94,11 +96,14 @@ function get_data(url, category){
 // creates posts from data and puts them on the page
 function populate_posts(posts_data){
 
+    // posts wrapper
+    var posts_wrapper = document.getElementById("posts")
+
     // create wrapper for posts
-    var posts_wrapper = document.createElement("div")
+    var posts_row = document.createElement("div")
 
     // set posts_wrapper class to bootstrap container 
-    posts_wrapper.className = "container"
+    posts_row.className = "row"
 
     // initalize posts html
     var posts_html = ''
@@ -117,25 +122,31 @@ function populate_posts(posts_data){
         // single post html
         var post_element = `
         
-            <div class="post_wrapper card">
+            <div class="col">
 
-                <h4>${title}</h4>
-
-                <p>${description}</p>
-
-                <a href="${link_href}">${link_name}</a>
+                
+                <div class="m-3 card">
+                    <div class="card-body">
+                        <h5 class="card-title">${title}</h5>
+                        <p class="card-text">${description}</p>
+                        <a href="${link_href}" class="btn btn-primary">${link_name}</a>
+                    </div>
+                </div>
+        
 
             </div>
         
         `
 
         // appends new post to the posts_wrapper element
-        posts_wrapper.innerHTML += post_element
+        posts_row.innerHTML += post_element
 
     }
 
     // puts the posts_wrapper on the dom under the page_wrapper parent element
-    page_wrapper.appendChild(posts_wrapper)
+    posts_wrapper.appendChild(posts_row)
+
+
     
 }
 
