@@ -6,7 +6,7 @@ function home_view(){
 function python_view(){
 
     // create page wrapper
-    create_base_view()
+    create_base_view('python')
 
     // gets posts data and then puts them on the dom 
     get_data("https://coding-resources-api.herokuapp.com/items/filter", 'python_info')
@@ -16,14 +16,57 @@ function python_view(){
 
 }
 
-// creates the wrapper for the page content
-function create_base_view(){
+//${location == 'posts'? 'active' : '' }
+function create_base_view(location){
 
     page_wrapper.innerHTML =  `
-    
-        <div class="container">
-    
-        </div>
+
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item ${location == 'terminal'? 'active' : '' }">
+                        <a class="nav-link" href="#">terminal <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item ${location == 'git'? 'active' : '' }">
+                        <a class="nav-link" href="#">git <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item ${location == 'python'? 'active' : '' }">
+                        <a class="nav-link" href="#">python <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item ${location == 'javascript'? 'active' : '' }">
+                        <a class="nav-link" href="#">javascript <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item ${location == 'html'? 'active' : '' }">
+                        <a class="nav-link" href="#">HTML <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item ${location == 'css'? 'active' : '' }">
+                        <a class="nav-link" href="#">CSS <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item ${location == 'editors'? 'active' : '' }">
+                        <a class="nav-link" href="#">editors <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item ${location == 'posts'? 'active' : '' }">
+                        <a class="nav-link" href="#">posts <span class="sr-only">(current)</span></a>
+                    </li>
+                  
+                </ul>
+            </div>
+        </nav>
+
+    </div>
     
     `
 
@@ -31,8 +74,6 @@ function create_base_view(){
 
 // takes in a url string, and a string for the category of the posts
 function get_data(url, category){
-
-    page_wrapper.innerHTML = ''
 
     // sends a post request to the desired url.
     // object that is on the data key gets sent over to the endpoint
@@ -48,9 +89,7 @@ function get_data(url, category){
         async: true
     })
 
-
 }
-
 
 // creates posts from data and puts them on the page
 function populate_posts(posts_data){
@@ -88,12 +127,10 @@ function populate_posts(posts_data){
 
             </div>
         
-        
         `
 
         // appends new post to the posts_wrapper element
         posts_wrapper.innerHTML += post_element
-
 
     }
 
@@ -104,27 +141,26 @@ function populate_posts(posts_data){
 
 function create_pdf_section(link_href, link_name){
 
-
     var pdf_section_wrapper = document.createElement("div")
+
     pdf_section_wrapper.innerHTML = `
+
         <div class="container">
             <div class="row" >
-
                 <div class="col-sm-6">
-
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">pdfs</h3>
                             <a class="btn btn-primary" href="${link_href}">${link_name}</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     
     `
-
     page_wrapper.appendChild(pdf_section_wrapper)
 
 }
+
+

@@ -1,7 +1,6 @@
-.test{
-    background: #add8e6;
-    color: black;
-    padding: 1rem;
-    width: 50%;
-    margin: auto;
+.active{
+    border-top: .05rem solid black;
+    border-bottom: .05rem solid black;
+    border-radius: .1rem;
+    text-align: center;
 }
