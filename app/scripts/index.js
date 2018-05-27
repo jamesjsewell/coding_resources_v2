@@ -3,17 +3,18 @@ class Page {
 
     constructor(category, pdfs) {
 
-        this.category = this.category
+        this.category = category
         this.posts_url = 'https://coding-resources-api.herokuapp.com/items/filter'
         this.pdfs = pdfs
         
         this.add_nav_bar()
         this.add_posts_section()
-        this.add_pdfs_section()
         
     }
 
     add_nav_bar(){
+
+        console.log(this.category)
 
         page_wrapper.innerHTML =  `
 
@@ -26,31 +27,31 @@ class Page {
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
 
-                            <li class="nav-item ${location == 'terminal'? 'active' : '' }">
+                            <li class="nav-item ${this.category == 'terminal'? 'active' : '' }">
                                 <a class="nav-link" href="#terminal">terminal <span class="sr-only">(current)</span></a>
                             </li>
 
-                            <li class="nav-item ${location == 'git'? 'active' : '' }">
+                            <li class="nav-item ${this.category == 'git'? 'active' : '' }">
                                 <a class="nav-link" href="#git">git <span class="sr-only">(current)</span></a>
                             </li>
 
-                            <li class="nav-item ${location == 'python'? 'active' : '' }">
+                            <li class="nav-item ${this.category == 'python'? 'active' : '' }">
                                 <a class="nav-link" href="#python">python <span class="sr-only">(current)</span></a>
                             </li>
 
-                            <li class="nav-item ${location == 'javascript'? 'active' : '' }">
+                            <li class="nav-item ${this.category == 'javascript'? 'active' : '' }">
                                 <a class="nav-link" href="#javascript">javascript <span class="sr-only">(current)</span></a>
                             </li>
 
-                            <li class="nav-item ${location == 'html'? 'active' : '' }">
+                            <li class="nav-item ${this.category == 'html'? 'active' : '' }">
                                 <a class="nav-link" href="#html">HTML <span class="sr-only">(current)</span></a>
                             </li>
 
-                            <li class="nav-item ${location == 'editors'? 'active' : '' }">
+                            <li class="nav-item ${this.category == 'editors'? 'active' : '' }">
                                 <a class="nav-link" href="#editors">editors <span class="sr-only">(current)</span></a>
                             </li>
 
-                            <li class="nav-item ${location == 'posts'? 'active' : '' }">
+                            <li class="nav-item ${this.category == 'posts'? 'active' : '' }">
                                 <a class="nav-link" href="#posts">posts <span class="sr-only">(current)</span></a>
                             </li>
 
@@ -68,6 +69,19 @@ class Page {
                         </ul>
                     </div>
                 </nav>
+
+        
+                <div class="row m-4">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">pdfs</h3>
+                                <a class="btn btn-primary" href="${this.pdfs.link_href}">${this.pdfs.link_name}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
 
             </div>
         
@@ -141,27 +155,6 @@ class Page {
         }
 
         posts_wrapper.appendChild(posts_row)
-
-    }
-
-    add_pdfs_section(){
-
-        page_wrapper.innerHTML += `
-
-            <div class="container">
-                <div class="row" >
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">pdfs</h3>
-                                <a class="btn btn-primary" href="${this.pdfs.link_href}">${this.pdfs.link_name}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        `
 
     }
 

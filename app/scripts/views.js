@@ -1,7 +1,11 @@
 var HOME = 'home',
-GITHUB = 'git',
 TERMINAL = 'terminal',
-PYTHON = 'python'
+GIT = 'git',
+PYTHON = 'python',
+JAVASCRIPT = 'javascript',
+HTML = 'html',
+EDITORS = 'editors',
+POSTS = 'posts'
 
 location_has_changed()
 
@@ -17,11 +21,11 @@ function location_has_changed(){
             
             break
     
-        case GITHUB:
+        case TERMINAL:
     
             break
     
-        case TERMINAL:
+        case GIT:
     
             break
     
@@ -29,6 +33,22 @@ function location_has_changed(){
     
             var pdfs = {link_href: 'https://drive.google.com/drive/u/0/folders/10LSb-wYQUDX9gvAgQ1wrQF-o3Wp_2yIY', link_name: 'python' }
             var python_page = new Page('python', pdfs)
+
+            break
+        
+        case JAVASCRIPT:
+
+            break
+        
+        case HTML:
+
+            break
+
+        case EDITORS:
+
+            break
+
+        case POSTS:
 
             break
     
