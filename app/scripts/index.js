@@ -22,10 +22,17 @@ function location_has_changed(){
             break
     
         case TERMINAL:
-    
+
+          
+            var pdfs = {link_href: 'https://drive.google.com/drive/folders/1RZq96RQHPSHXlLWpojqvYbj-q70uaOnJ?usp=sharing', link_name: 'python' }
+            var terminal_page = new Page('terminal', pdfs)
+            
             break
     
         case GIT:
+
+            var pdfs = {link_href: 'https://drive.google.com/drive/folders/1R9Jva2pJ6eDXZapg9vREZ_2NepMmVoLd', link_name: 'python' }
+            var git_page = new Page('git', pdfs)
     
             break
     
@@ -38,17 +45,26 @@ function location_has_changed(){
         
         case JAVASCRIPT:
 
+            var javascript_page = new Page('javascript')
+
             break
         
         case HTML:
+
+            var pdfs = {link_href: 'https://drive.google.com/drive/folders/1phgTaKD7SVr0GCybSHdgb9QbWlUqXnRy?usp=sharing', link_name: 'python' }
+            var html_page = new Page('html', pdfs)
 
             break
 
         case EDITORS:
 
+            var editors_page = new Page('editors')
+
             break
 
         case POSTS:
+
+            var posts_page = new Page('posts')
 
             break
     

@@ -5,7 +5,10 @@ class Page {
 
         this.category = category
         this.posts_url = 'https://coding-resources-api.herokuapp.com/items/filter'
-        this.pdfs = pdfs
+
+        if(pdfs){
+            this.pdfs = pdfs
+        }
         
         this.add_nav_bar()
         this.add_posts_section()
@@ -71,8 +74,8 @@ class Page {
                 </nav>
 
         
-                <div class="row m-4">
-                    <div class="col-4">
+                ${ this.pdfs? `<div class="row m-4">
+                    <div class="col">
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">pdfs</h3>
@@ -80,7 +83,7 @@ class Page {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>` : ''}
            
 
             </div>
