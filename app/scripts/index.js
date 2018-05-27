@@ -15,9 +15,16 @@ function location_has_changed(){
 
     switch(browser_location){
 
+        case '':
+
+            var html_page = new Page('home')
+
+            break
+
         case HOME:
     
-            home_view()
+            var pdfs = {link_href: 'https://drive.google.com/drive/folders/1phgTaKD7SVr0GCybSHdgb9QbWlUqXnRy?usp=sharing', link_name: 'python' }
+            var html_page = new Page('html', pdfs)
             
             break
     
