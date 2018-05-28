@@ -9,6 +9,9 @@ class Page {
         if(pdfs){
             this.pdfs = pdfs
         }
+        else{
+            this.pdfs = ""
+        }
         
         this.add_nav_bar()
         this.add_posts_section()
@@ -63,9 +66,13 @@ class Page {
                                     CSS
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">layout</a>
-                                    <a class="dropdown-item" href="#">fonts and icons</a>
-                                    <a class="dropdown-item" href="#">svgs</a>
+                                    <a class="dropdown-item ${this.category == 'css_general'? 'active' : '' }" href="#css_general">general</a>
+                                    <a class="dropdown-item ${this.category == 'css_effects'? 'active' : '' }" href="#css_effects">effects</a>
+                                    <a class="dropdown-item ${this.category == 'css_icons'? 'active' : '' }" href="#css_icons">icons</a>
+                                    <a class="dropdown-item ${this.category == 'css_fonts'? 'active' : '' }" href="#css_fonts">fonts</a>
+                                    <a class="dropdown-item ${this.category == 'css_svgs'? 'active' : '' }" href="#css_svgs">svgs</a>
+                                    <a class="dropdown-item ${this.category == 'css_gradients'? 'active' : '' }" href="#css_gradients">gradients</a>
+                                    <a class="dropdown-item ${this.category == 'css_frameworks'? 'active' : '' }" href="#css_frameworks">frameworks</a>
                                 </div>
                             </li>
                         
@@ -144,7 +151,7 @@ class Page {
                         <div class="card-body">
                             <h5 class="card-title">${title}</h5>
                             <p class="card-text">${description}</p>
-                            <a href="${link_href}" class="btn btn-primary">${link_name}</a>
+                            ${link_href? `<a href="${link_href}" class="btn btn-primary">${link_name}</a>` : ''}
                         </div>
                     </div>
             
