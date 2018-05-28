@@ -35,7 +35,7 @@ class Page {
                         <ul class="navbar-nav">
 
                             <li class="nav-item ${this.category == 'home'? 'active' : '' }">
-                                <a class="nav-link" href="#terminal">home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="#home">home <span class="sr-only">(current)</span></a>
                             </li>
 
                             <li class="nav-item ${this.category == 'terminal'? 'active' : '' }">
