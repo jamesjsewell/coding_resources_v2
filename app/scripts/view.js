@@ -93,7 +93,7 @@ class Page {
                     <div class="col">
                      
                         <div class="alert alert-primary" role="alert">
-                            <a href="${this.pdfs.link_href}" class="alert-link"> download ${this.pdfs.link_name} pdfs</a>. these are hosted on google drive
+                            <a href="${this.pdfs.link_href}" class="alert-link"> download</a> ${this.page_title} pdfs, these are hosted on google drive
                         </div>
                          
                     </div>
@@ -111,7 +111,6 @@ class Page {
 
         this.get_posts()
 
-
     }
 
     get_posts(){
@@ -120,12 +119,12 @@ class Page {
         var posts_wrapper = document.getElementById("posts")
 
         var posts_row = document.createElement("div")
-
+        posts_row.id = "posts_row"
         posts_row.className = "row"
 
         posts_row.innerHTML = `
             <div class="container">
-            
+
                 <div class="">
                     <div class="loading_icon" style="100%;height:100%">
                     <div style="left:38px;top:38px;animation-delay:0s"></div>
@@ -149,7 +148,33 @@ class Page {
             method: "POST",
             url: this.posts_url,
             data: {category: this.category},
-            success: (response)=>{this.generate_posts(response, posts_wrapper, posts_row)},
+            success: (response)=>{
+
+                if(response){
+
+                    if(response.length > 0 && response[0]){
+                        if(response[0].title){
+
+                            this.generate_posts(response, posts_wrapper, posts_row)
+
+                            return
+
+                        }
+                    }
+
+                }
+                
+                page_wrapper.innerHTML += `
+                    <div class="container">
+                        <p>no posts have been made to the ${this.page_title} page</p>
+                    </div>
+            
+                `
+
+                var posts_row_element = document.getElementById("posts_row")
+                posts_row_element.innerHTML = ``
+
+            },
             async: true
         })
 
@@ -170,7 +195,6 @@ class Page {
             var post_element = `
             
                 <div class="col">
-
                     
                     <div class="card m-1">
                         <div class="card-body">
@@ -179,7 +203,6 @@ class Page {
                             ${link_href? `<a href="${link_href}" class="">${link_name}</a>` : ''}
                         </div>
                     </div>
-            
 
                 </div>
             
