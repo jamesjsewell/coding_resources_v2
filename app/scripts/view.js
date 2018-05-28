@@ -124,18 +124,22 @@ class Page {
         posts_row.className = "row"
 
         posts_row.innerHTML = `
+            <div class="container">
+            
+                <div class="">
+                    <div class="loading_icon" style="100%;height:100%">
+                    <div style="left:38px;top:38px;animation-delay:0s"></div>
+                    <div style="left:80px;top:38px;animation-delay:0.125s"></div>
+                    <div style="left:122px;top:38px;animation-delay:0.25s"></div>
+                    <div style="left:38px;top:80px;animation-delay:0.875s"></div>
+                    <div style="left:122px;top:80px;animation-delay:0.375s"></div>
+                    <div style="left:38px;top:122px;animation-delay:0.75s"></div>
+                    <div style="left:80px;top:122px;animation-delay:0.625s"></div>
+                    <div style="left:122px;top:122px;animation-delay:0.5s"></div>
+                </div> 
+                <div><p>contacting the server, this may take a moment...</p></div>
 
-            <div class="">
-                <div class="loading_icon" style="100%;height:100%">
-                <div style="left:38px;top:38px;animation-delay:0s"></div>
-                <div style="left:80px;top:38px;animation-delay:0.125s"></div>
-                <div style="left:122px;top:38px;animation-delay:0.25s"></div>
-                <div style="left:38px;top:80px;animation-delay:0.875s"></div>
-                <div style="left:122px;top:80px;animation-delay:0.375s"></div>
-                <div style="left:38px;top:122px;animation-delay:0.75s"></div>
-                <div style="left:80px;top:122px;animation-delay:0.625s"></div>
-                <div style="left:122px;top:122px;animation-delay:0.5s"></div>
-            </div> 
+            </div>
             
         `
 
