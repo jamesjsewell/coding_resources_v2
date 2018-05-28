@@ -1,10 +1,11 @@
 
 class Page {
 
-    constructor(category, pdfs) {
+    constructor(category, pdfs, page_title) {
 
         this.category = category
         this.posts_url = 'https://coding-resources-api.herokuapp.com/items/filter'
+        this.page_title = page_title
 
         if(pdfs){
             this.pdfs = pdfs
@@ -80,15 +81,17 @@ class Page {
                     </div>
                 </nav>
 
-        
-                ${ this.pdfs? `<div class="row m-4">
+                <hr class="my-4">
+                <h2>${this.page_title}</h2>
+                <hr class="my-4">
+
+                ${ this.pdfs? `<div class="row">
                     <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">pdfs</h3>
-                                <a class="btn btn-primary" href="${this.pdfs.link_href}">${this.pdfs.link_name}</a>
-                            </div>
+                     
+                        <div class="alert alert-primary" role="alert">
+                            <a href="${this.pdfs.link_href}" class="alert-link"> download ${this.pdfs.link_name} pdfs</a>. these are hosted on google drive
                         </div>
+                         
                     </div>
                 </div>` : ''}           
 
@@ -161,11 +164,11 @@ class Page {
                 <div class="col">
 
                     
-                    <div class="m-3 card">
+                    <div class="card m-1">
                         <div class="card-body">
                             <h5 class="card-title">${title}</h5>
                             <p class="card-text">${description}</p>
-                            ${link_href? `<a href="${link_href}" class="btn btn-primary">${link_name}</a>` : ''}
+                            ${link_href? `<a href="${link_href}" class="">${link_name}</a>` : ''}
                         </div>
                     </div>
             
