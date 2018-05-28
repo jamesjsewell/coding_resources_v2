@@ -90,8 +90,7 @@ class Page {
                             </div>
                         </div>
                     </div>
-                </div>` : ''}
-           
+                </div>` : ''}           
 
             </div>
         
@@ -103,12 +102,6 @@ class Page {
 
         page_wrapper.innerHTML += `<div id="posts" class="container"></div>`
 
-        var posts_wrapper = document.getElementById("posts")
-
-        var posts_row = document.createElement("div")
-
-        posts_row.className = "row"
-
         this.get_posts()
 
 
@@ -116,23 +109,44 @@ class Page {
 
     get_posts(){
 
-        $.ajax({
-            method: "POST",
-            url: this.posts_url,
-            data: {category: this.category},
-            success: (response)=>{this.generate_posts(response)},
-            async: true
-        })
-
-    }
-
-    generate_posts(posts_data){
 
         var posts_wrapper = document.getElementById("posts")
 
         var posts_row = document.createElement("div")
 
         posts_row.className = "row"
+
+        posts_row.innerHTML = `
+
+            <div class="">
+                <div class="loading_icon" style="100%;height:100%">
+                <div style="left:38px;top:38px;animation-delay:0s"></div>
+                <div style="left:80px;top:38px;animation-delay:0.125s"></div>
+                <div style="left:122px;top:38px;animation-delay:0.25s"></div>
+                <div style="left:38px;top:80px;animation-delay:0.875s"></div>
+                <div style="left:122px;top:80px;animation-delay:0.375s"></div>
+                <div style="left:38px;top:122px;animation-delay:0.75s"></div>
+                <div style="left:80px;top:122px;animation-delay:0.625s"></div>
+                <div style="left:122px;top:122px;animation-delay:0.5s"></div>
+            </div> 
+            
+        `
+
+        posts_wrapper.appendChild(posts_row)
+
+        $.ajax({
+            method: "POST",
+            url: this.posts_url,
+            data: {category: this.category},
+            success: (response)=>{this.generate_posts(response, posts_wrapper, posts_row)},
+            async: true
+        })
+
+    }
+
+    generate_posts(posts_data, posts_wrapper, posts_row){
+
+        posts_row.innerHTML = ''
 
         var posts_html = ''
 
