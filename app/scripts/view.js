@@ -34,6 +34,10 @@ class Page {
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
 
+                            <li class="nav-item ${this.category == 'home'? 'active' : '' }">
+                                <a class="nav-link" href="#terminal">home <span class="sr-only">(current)</span></a>
+                            </li>
+
                             <li class="nav-item ${this.category == 'terminal'? 'active' : '' }">
                                 <a class="nav-link" href="#terminal">terminal <span class="sr-only">(current)</span></a>
                             </li>

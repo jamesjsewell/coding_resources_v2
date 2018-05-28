@@ -24,13 +24,13 @@ function location_has_changed(){
 
         case '':
 
-            var html_page = new Page('home')
+            var html_page = new Page('home', null, 'Home')
 
             break
 
         case HOME:
     
-            var home_page = new Page('html')
+            var home_page = new Page('home', null, 'Home')
             
             break
     
